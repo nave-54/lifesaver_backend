@@ -1,8 +1,7 @@
 const app = require('express');
 const conn = require('./connection')
 const need=(req,res)=>{
-    const query = "Select * from donate";
-    conn.query(query,(error,results)=>{
+    conn.query(`Select * from donate`,(error,results)=>{
         if (error)
             console.log(error)
         else{

@@ -8,7 +8,7 @@ const forgotpass=(req,res)=>{
     const memail = req.body.name
     const pass = req.body.pass
     conn.query(`Select * from register where (email)=('${memail}') or (pno)=('${memail}')`,async(err,results)=>{
-        console.log(results)
+    //    console .log(results)
         if(results.length===0)
         {
             res.status(400).send("User not exist")
@@ -33,7 +33,7 @@ const forgotpassotp=(req,res)=>{
     const min = 100000;
     const max = 999999;
     randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    console.log("otp : "+randomNumber)
+    // console.log("otp : "+randomNumber)
    if(memail.length===0)
     {
         res.status(400).send("Please Enter the valid Info")
@@ -48,38 +48,38 @@ const forgotpassotp=(req,res)=>{
                         {
                             res.status(200).send("User is Not Registered")
                         }
-                        else{
-                            let transport = nodemailer.createTransport({
-                                service : "gmail",
-                                auth : {
-                                   user : "lifesaverdomain@gmail.com",
-                                   pass : "unmrdijawdaogmrf"
-                                }
-                             })
-                             let content={
-                                from : "lifesaverdomain@gmail.com",
-                                to : memail,
-                                subject : "OTP  FROM LIFE SAVER",
-                                text : `Your OTP is ,
-                                ${randomNumber}
-        Please Don't Share to Anyone.. 
+        //                 else{
+        //                     let transport = nodemailer.createTransport({
+        //                         service : "gmail",
+        //                         auth : {
+        //                            user : "lifesaverdomain@gmail.com",
+        //                            pass : "xjqertnutavzxgtr"
+        //                         }
+        //                      })
+        //                      let content={
+        //                         from : "lifesaverdomain@gmail.com",
+        //                         to : memail,
+        //                         subject : "OTP  FROM LIFE SAVER",
+        //                         text : `Your OTP is ,
+        //                         ${randomNumber}
+        // Please Don't Share to Anyone.. 
                                 
-           𝐖𝐢𝐭𝐡 𝐑𝐞𝐠𝐚𝐫𝐝𝐬,
-          𝐓𝐄𝐀𝐌 𝐋𝐈𝐅𝐄 𝐒𝐀𝐕𝐄𝐑
-        `
-                             }
-                             transport.sendMail(content,(err,info)=>{
-                                if(err)
-                                {
-                                   console.log(err)
-                                }
-                                else{
-                                   console.log("Response : "+info.response)
-                                }
-                             })
-                        }
+        //    𝐖𝐢𝐭𝐡 𝐑𝐞𝐠𝐚𝐫𝐝𝐬,
+        //   𝐓𝐄𝐀𝐌 𝐋𝐈𝐅𝐄 𝐒𝐀𝐕𝐄𝐑
+        // `
+        //                      }
+        //                      transport.sendMail(content,(err,info)=>{
+        //                         if(err)
+        //                         {
+        //                         //    console.log(err)
+        //                         }
+        //                         else{
+        //                            console.log("Response : "+info.response)
+        //                         }
+        //                      })
+        //                 }
                 })
-                res.status(200).send("OTP Successfully Send to Your Mail")
+                // res.status(200).send("OTP Successfully Send to Your Mail")
             }
         })
         // const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
